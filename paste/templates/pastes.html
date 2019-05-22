@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if results_found %}
+        <div id="pastes-list">
+            {% for paste in results %}
+            
+                <div class="item" data-url="{{ paste.url }}">
+                    <span>{{ paste.summary }}</span>
+                    <a href="{{ paste.remove_url }}">delete</a>
+                </div>
+            
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div id="not-found">no pastes found</div>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/static/js/pastes.js"></script>
+{% endblock %}

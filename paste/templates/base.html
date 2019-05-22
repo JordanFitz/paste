@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}paste{% endblock %}</title>
+
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/static/css/spinner.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+        <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
+    </head>
+    <body>
+        {% if not logged_in %}
+        <div class="popup hidden form-error"></div>
+
+        <div class="overlay" id="log-in-page">
+            <div class="inner">
+                <div class="loading">
+                    <div class="lds-ripple"><div></div><div></div></div>
+                </div>
+
+                <header>log in or <button id="sign-up-button">sign up</button></header>
+                <form action="/log-in" method="post"> {% csrf_token %}
+                    <input type="text" name="username" placeholder="username">
+                    <input type="password" name="password" placeholder="password">
+                    <input type="submit" name="submit" value="submit">
+                </form>
+            </div>
+        </div>
+
+        <div class="overlay" id="sign-up-page">
+            <div class="inner">
+                <div class="loading">
+                    <div class="lds-ripple"><div></div><div></div></div>
+                </div>
+
+                <header>sign up or <button id="log-in-button2">log in</button></header>
+                <form action="/sign-up" method="post"> {% csrf_token %}
+                    <input type="text" name="username" placeholder="username">
+                    <input type="password" name="password1" placeholder="password">
+                    <input type="password" name="password2" placeholder="password (again)">
+                    <input type="submit" name="submit" value="submit">
+                </form>
+            </div>
+        </div>
+        {% endif %}
+
+        <nav>
+            <div id="brand">
+                <a href="/">paste</a>
+            </div>
+            
+            <div class="right">
+            {% if not logged_in %}
+                <button id="log-in-button">log in</button>
+            {% else %}
+                <a href="/pastes">pastes</a>&nbsp;/&nbsp;<a href="/log-out">log out</a>
+            {% endif %}
+            </div>
+        </nav>
+
+        {% block content %}{% endblock %}
+
+        <script type="text/javascript" src="/static/js/util.js"></script>
+        {% if not logged_in %}<script type="text/javascript" src="/static/js/base.js"></script>{% endif %}
+        {% block js %}{% endblock %}
+    </body>
+</html>

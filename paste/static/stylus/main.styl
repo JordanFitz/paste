@@ -1,0 +1,325 @@
+// RESET
+
+html
+    box-sizing: border-box
+    border-collapse: collapse
+    line-height: 1
+    font-family: sans-serif
+*
+    margin: 0
+    padding: 0
+    border-collapse: inherit
+
+*, *:before, *:after
+    box-sizing: inherit
+
+*:not(body)
+    background-repeat: no-repeat
+    background-position: 50%
+    background-size: cover
+
+body
+    position: relative
+
+[hidden]
+    display: none !important
+
+ul, ol, menu
+    list-style: none
+
+a
+    color: inherit
+
+fieldset
+    border: none
+
+
+// STYLES
+
+
+button()
+    background: none
+    border: 1px solid border-color
+    outline: none
+    cursor: pointer
+    color: #666666
+    
+    &:hover
+        color: #000
+        text-decoration: underline
+
+
+main-font = "Source Code Pro"
+border-color = rgba(0, 0, 0, 0.15)
+
+
+body, html
+    height: 100%
+    background: #D9D9D9
+
+nav
+    background: #F5F5F5
+    font-family: main-font
+    font-size: 15px
+    border-bottom: 1px solid border-color
+    line-height: 15px
+    
+    #brand
+        float: left
+        padding: 26px 0 26px 40px
+        
+        a
+            text-decoration: none
+    
+    button
+        button()
+        font: inherit
+        padding: 10px 15px
+        margin: 15px 40px 15px 0
+        
+    .right a 
+        padding: 26px 0
+        display: inline-block
+        &:last-child
+            padding-right: 40px
+
+    .right
+        float: right
+        
+    &::after
+        content: " ";
+        display: block; 
+        height: 0; 
+        clear: both;
+
+
+.overlay 
+    z-index: 9999
+
+    display: flex
+    justify-content: center
+    align-items: center
+    
+    position: fixed
+    
+    font-family: main-font
+    
+    top: 0
+    bottom: 0
+    right:0
+    left: 0
+    
+    background: rgba(0, 0, 0, 0.6)
+    
+    display: none
+
+    header
+        font-size: 20px
+        display: block
+        margin-bottom: 40px
+        line-height: 32px
+        
+        button 
+            font: inherit
+            padding: 10px 15px
+            line-height: 20px
+            button()
+    
+    .inner
+        background: #fff
+        padding: 85px
+        position: relative
+        
+        .loading
+            position: absolute
+            top: 0
+            bottom: 0
+            right: 0
+            left: 0
+            
+            background: rgba(255, 255, 255, .8)
+
+            display: none
+            justify-content: center
+            align-items: center
+
+        input
+            width: 300px
+            display: block
+            border: 1px solid border-color
+            padding: 15px 20px
+            background: none
+            margin-bottom: 10px
+            font-family: main-font
+            
+            outline: none
+            
+            &.error
+                border-color: #E892BF
+
+            &:last-child
+                margin: 0
+                padding: 10px 20px
+                
+            &[type="submit"]
+                button()
+
+
+.popup
+    position: fixed
+    top: 0
+    left: 50%
+    margin-left: calc(470px / -2)
+    width: 470px
+    text-align: center
+    background: #FCFCFC
+    border: 1px solid border-color
+    border-top: none
+    font-size: 15px
+    font-family: main-font
+    
+    transition: top 0.4s, opacity 0.4s;
+        
+    &.hidden
+        top: -55px
+        opacity: 0
+
+    span
+        padding: 17px 20px
+        display: inline-block
+    
+    button
+        button()
+        padding: 5px 10px
+        margin: 10px 0
+        font-family: inherit
+        cursor: pointer
+
+
+.form-error
+    z-index: 99999
+    background: #F5D3E4
+
+
+.post-loading
+    z-index: 999;
+
+    position: fixed
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    
+    background: rgba(255, 255, 255, .8)
+
+    display: none
+    justify-content: center
+    align-items: center
+
+
+textarea
+    margin: 0
+    padding: 30px 40px
+    border: none
+    outline: none
+    width: 100%
+    height: calc(100% - 68px)
+    box-sizing: border-box
+    float: left
+    font-family: main-font
+    font-size: 18px
+    resize: none
+    overflow-y: scroll
+    line-height: 20px
+
+
+#paste
+    padding: 50px 60px
+    width: 60%
+    box-sizing: border-box
+    float: left
+    font-family: main-font
+    font-size: 18px
+    line-height: 20px
+    
+    margin: 70px 20% 10px 20%
+    
+    white-space: pre-wrap
+    word-wrap: break-word
+
+    background: #fff
+
+
+#paste-info
+    margin: 0 20% 70px 20%
+    text-align: right
+    color: #919191
+    font-family: main-font
+    font-size: 14px
+    font-style: italic
+
+
+#pastes-list
+    padding: 50px 60px
+    width: 80%
+    box-sizing: border-box
+    font-family: main-font
+    font-size: 18px
+    
+    margin: 70px 10%
+    
+    &::after
+        content: " ";
+        display: block; 
+        height: 0; 
+        clear: both;
+
+    .item
+        opacity: .8
+        margin-bottom: 15px
+        cursor: pointer
+        padding: 15px 25px
+        background: #fff
+        
+        line-height: 25px
+
+        display: flex
+        justify-content: space-between
+        align-items: center
+        flex-wrap: wrap
+
+        span
+            margin-right: 15px
+            max-width: 100%
+            word-wrap: break-word
+        
+        &:hover
+            opacity: 1
+
+
+#not-found
+    padding: 0 80px
+    text-align: center
+    font-family: main-font
+    font-size: 60px
+    color: #252525
+    height: calc(100% - 68px)
+    display: flex
+    justify-content: center
+    align-items: center
+
+@media all and (max-width: 1000px)
+    #paste 
+        padding: 30px 40px
+        
+    #pastes-list
+        padding: 0
+
+    #paste, #pastes-list
+        font-size: 16px
+        margin: 40px 10% 10px 10%
+        width: 80%
+        
+    #paste-info
+        font-size: 13px
+        margin: 0 10% 70px 10%

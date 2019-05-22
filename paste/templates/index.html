@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="post-loading">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+
+    <div class="popup hidden post">
+        <span>hit ctrl+enter or</span><button id="submit-paste">submit</button><span>to post</span>
+    </div>
+
+    <div id="post-csrf">{% csrf_token %}</div>
+    <textarea autofocus maxlength="10000" placeholder="Put some text here"></textarea>
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/static/js/index.js"></script>
+{% endblock %}

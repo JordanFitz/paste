@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if found %}
+    <pre id="paste">{{ text }}</pre>
+    <div id="paste-info">
+        pasted on {{ date|date:'m/d/Y' }} by {{ poster }}
+    </div>
+{% else %}
+    <div id="not-found">{{ slug }} is not a real paste</div>
+{% endif %}
+
+{% endblock %}
